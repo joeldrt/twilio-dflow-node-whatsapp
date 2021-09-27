@@ -1,13 +1,13 @@
-import { Schema, model, Types } from "mongoose"
+import { Document, Schema, model, Types } from "mongoose"
 
-export interface ProductType {
+export interface IProductType extends Document {
   code: string
   name: string
   description: string
   price: Schema.Types.Decimal128
 }
 
-const productSchema = new Schema<ProductType>({
+const productSchema = new Schema<IProductType>({
   code: {
     type: String,
     required: true,

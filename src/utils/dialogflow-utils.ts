@@ -1,4 +1,4 @@
-import { ProductType } from "./../models/product"
+import { IProductType } from "./../models/product"
 export const toDfResponse = (text: string) => {
   return {
     fulfillmentText: `${text}`,
@@ -17,6 +17,6 @@ export const productToText = ({
   name,
   description,
   price,
-}: ProductType) => {
+}: IProductType) => {
   return `CODE: ${code},\nNAME: ${name},\nDESCRIPTION: ${description},\nPRICE: ${price.toString()}`
 }
