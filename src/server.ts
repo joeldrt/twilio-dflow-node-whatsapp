@@ -3,6 +3,7 @@ import express from "express"
 import mongoose from "mongoose"
 import fulfillHandler from "./routes/handler"
 import productHandler from "./routes/product"
+import warehouseHandler from "./routes/warehouse"
 
 dotenv.config()
 
@@ -24,6 +25,7 @@ app.use(express.json())
 
 app.use("/twilioWhatsappDFAgentFulFill", fulfillHandler)
 app.use("/product", productHandler)
+app.use("/warehouse", warehouseHandler)
 
 const port = process.env.PORT || 3000
 app.listen(port, () => {

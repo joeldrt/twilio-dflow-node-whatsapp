@@ -12,11 +12,9 @@ export const toDfResponse = (text: string) => {
   }
 }
 
-export const productToText = ({
-  code,
-  name,
-  description,
-  price,
-}: IProductType) => {
-  return `CODE: ${code},\nNAME: ${name},\nDESCRIPTION: ${description},\nPRICE: ${price.toString()}`
+export const productToText = (
+  { code, name, description, price }: IProductType,
+  inventory: number
+) => {
+  return `CODE: ${code},\nNAME: ${name},\nDESCRIPTION: ${description},\nPRICE: ${price.toString()}\nINVENTORY: ${inventory}`
 }

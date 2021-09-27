@@ -1,3 +1,4 @@
+import { getInventoryByLoop } from "./../services/stockEntry"
 import { findProductByCode } from "./../services/product"
 import { productToText, toDfResponse } from "./../utils/dialogflow-utils"
 
@@ -14,7 +15,8 @@ const fetchIntentController = async (req: any, res: any, next: any) => {
     if (!product) {
       return res.json(toDfResponse(`404 product not found`))
     }
-    const fulfillText = productToText(product)
+    const inventory = await getInventoryByLoop(code)
+    const fulfillText = productToText(product, Number(inventory))
     res.json(toDfResponse(fulfillText))
   } catch (error) {
     res.json(toDfResponse(error.message))
