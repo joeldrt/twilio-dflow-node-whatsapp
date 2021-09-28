@@ -43,7 +43,7 @@ export const bulkAddStockEntry = async (
         amount: amount[i],
         reqPhoneNumber,
       })
-      const result = `OK - PID: ${code[i]} / Amount: ${amount[i]}`
+      const result = `OK - PID: ${code[i]} / Amount: ${amount[i]}\n${order.id}`
       bulkResponse.push(result)
     } catch (error) {
       const result = `ERROR - PID: ${code[i]} / Amount: ${amount[i]}\n${error.message}`

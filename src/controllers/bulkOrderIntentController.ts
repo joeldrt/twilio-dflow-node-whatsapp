@@ -19,7 +19,7 @@ const bulkOrderIntentController = async (req: any, res: any, next: any) => {
   if (amount.length !== code.length) {
     return res.json(toDfResponse("codes and amounts length mismatch"))
   }
-  const results = await bulkAddStockEntry(amount, code, From)
+  const results = await bulkAddStockEntry(code, amount, From)
   return res.json(toDfResponse(results.join("\n")))
 }
 
