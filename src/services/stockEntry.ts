@@ -30,6 +30,29 @@ export const addStockEntry = async ({
   return stockEntry
 }
 
+export const bulkAddStockEntry = async (
+  code: string[],
+  amount: number[],
+  reqPhoneNumber: string
+): Promise<string[]> => {
+  const bulkResponse = []
+  for (let i = 0; i < code.length; i++) {
+    try {
+      const order = await addStockEntry({
+        productCode: code[i],
+        amount: amount[i],
+        reqPhoneNumber,
+      })
+      const result = `OK - PID: ${code[i]} / Amount: ${amount[i]}`
+      bulkResponse.push(result)
+    } catch (error) {
+      const result = `ERROR - PID: ${code[i]} / Amount: ${amount[i]}\n${error.message}`
+      bulkResponse.push(result)
+    }
+  }
+  return bulkResponse
+}
+
 export const getInventory = async (code: string): Promise<string> => {
   const inventory = await StockEntry.aggregate([
     {

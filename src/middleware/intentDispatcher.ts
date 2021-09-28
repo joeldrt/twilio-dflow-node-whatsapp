@@ -1,7 +1,12 @@
 import createOrderIntentController from "./../controllers/createOrderIntentController"
 import fetchIntentController from "./../controllers/fetchIntentController"
+import bulkOrderIntentController from "./../controllers/bulkOrderIntentController"
 import defaultIntentController from "./../controllers/defaultIntentController"
-import { INTENT_FETCH_PRODUCT, INTENT_CREATE_ORDER } from "./../lib/constants"
+import {
+  INTENT_FETCH_PRODUCT,
+  INTENT_CREATE_ORDER,
+  INTENT_CREATE_ORDE_BULK,
+} from "./../lib/constants"
 
 const intentDispatcher = () => {
   return (req: any, res: any, next: any) => {
@@ -16,6 +21,8 @@ const intentDispatcher = () => {
       fetchIntentController(req, res, next)
     } else if (name === INTENT_CREATE_ORDER) {
       createOrderIntentController(req, res, next)
+    } else if (name === INTENT_CREATE_ORDE_BULK) {
+      bulkOrderIntentController(req, res, next)
     } else {
       defaultIntentController(req, res, next)
     }
